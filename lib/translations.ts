@@ -50,6 +50,10 @@ export const english: Record<string,string> = {
  'লাইট মোড':'Light mode','ডার্ক মোড':'Dark mode','ডার্ক মোড চালু করুন':'Switch to dark mode','লাইট মোড চালু করুন':'Switch to light mode','ভাষা ও রঙের পছন্দ':'Language and appearance',
 };
 Object.assign(english,{
+  'ইমেইল ঠিকানা':'Email address',
+  'সঠিক ইমেইল ঠিকানা লিখুন।':'Enter a valid email address.'
+});
+Object.assign(english,{
   "রং": "Colour",
   "আপনার পছন্দের রং": "Choose your colours",
   "যেকোনো রং বেছে নিন। পছন্দটি শুধু এই ব্রাউজারে থাকবে।": "Choose a palette. Your preference stays in this browser.",
