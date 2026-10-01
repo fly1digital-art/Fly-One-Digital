@@ -12,5 +12,5 @@ return [
  'setup_key' => '',
  // Change to live only when ready to receive actual cash-on-delivery orders.
  'checkout_mode' => 'demo',
- 'meta_pixel_id' => '',
+ 'meta_pixel_id' => '1094362616793836',
 ];
