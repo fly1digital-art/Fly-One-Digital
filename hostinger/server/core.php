@@ -58,7 +58,7 @@ function read_content(): array {
  $saved=json_decode($row['content'],true,64,JSON_THROW_ON_ERROR);$result=array_replace_recursive($base,$saved);
  if(($result['document']['product']['phone']??'')==='+8801990090262')$result['document']['product']['phone']='+8801323527412';return $result;
 }
-function public_config(): array {$c=config();$pixel=(string)($c['meta_pixel_id']??'1094362616793836');if($pixel==='')$pixel='1094362616793836';return ['mode'=>($c['checkout_mode']??'demo')==='live'?'live':'demo','pixelId'=>preg_match('/^\d{5,25}$/D',$pixel)?$pixel:''];}
+function public_config(): array {$c=config();$pixel=(string)($c['meta_pixel_id']??'1094362616793836');if($pixel==='')$pixel='1094362616793836';$live=is_file(dirname(__DIR__).'/live.flag')||($c['checkout_mode']??'demo')==='live';return ['mode'=>$live?'live':'demo','pixelId'=>preg_match('/^\d{5,25}$/D',$pixel)?$pixel:''];}
 function summary(array $r): array {return ['reference'=>$r['reference'],'createdAt'=>$r['created_at'],'updatedAt'=>$r['updated_at'],'status'=>$r['status'],'paymentStatus'=>$r['payment_status'],'area'=>$r['area'],'subtotal'=>(int)$r['subtotal'],'delivery'=>(int)$r['delivery'],'total'=>(int)$r['total'],'quantity'=>1,'demo'=>(bool)$r['is_demo']];}
 function authorized_order(mixed $ref): array|false {
  $auth=$_SERVER['HTTP_AUTHORIZATION']??$_SERVER['REDIRECT_HTTP_AUTHORIZATION']??'';
