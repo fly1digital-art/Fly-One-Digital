@@ -1,0 +1,48 @@
+{
+  "palette": "red",
+  "videoId": "M7lc1UVf-VE",
+  "sample": true,
+  "document": {
+    "design": {
+      "background": "#ffffff",
+      "primary": "#b92332",
+      "surface": "#f4e8e9"
+    },
+    "copy": {},
+    "images": {
+      "hero": "/images/77767.webp",
+      "checkout": "/images/77768.webp",
+      "product": "/images/77767.webp",
+      "gallery0": "/images/77767.webp",
+      "gallery1": "/images/77768.webp",
+      "gallery2": "/images/77769.webp",
+      "gallery3": "/images/77770.webp",
+      "gallery4": "/images/77757.webp",
+      "gallery5": "/images/77752.webp",
+      "gallery6": "/images/77755.webp"
+    },
+    "sections": {
+      "details": true,
+      "gallery": true,
+      "video": true,
+      "steps": true,
+      "faq": true
+    },
+    "product": {
+      "name": "Glasses Wireless headset",
+      "model": "F-06",
+      "brand": "Glasses",
+      "price": 799,
+      "regular": 1199,
+      "deliveryFee": 130,
+      "phone": "+8801323527412",
+      "facebook": "https://www.facebook.com/99fay/",
+      "version": "V5.4",
+      "battery": "80mAh"
+    },
+    "seo": {
+      "title": "F-06 গ্লাসেস ওয়্যারলেস হেডসেট | ৳৭৯৯-এ ক্যাশ অন ডেলিভারি",
+      "description": "চশমা পরুন। প্রিয় গানও শুনুন। F-06 Glasses Wireless headset এখন ৳৭৯৯। সারা বাংলাদেশে ডেলিভারি ৳১৩০।"
+    }
+  }
+}

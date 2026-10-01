@@ -1,0 +1,11 @@
+{
+  "hostinger/main.tsx": {
+    "file": "app-XcHcSLjC.js",
+    "name": "main",
+    "src": "hostinger/main.tsx",
+    "isEntry": true,
+    "css": [
+      "main-BulqfLeV.css"
+    ]
+  }
+}
