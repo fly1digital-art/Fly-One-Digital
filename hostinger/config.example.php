@@ -10,7 +10,7 @@ return [
  'db_pass' => 'YOUR_DATABASE_PASSWORD',
  // Generate with a password manager: at least 32 random characters. Clear after setup.
  'setup_key' => '',
- // Change to live only when ready to receive actual cash-on-delivery orders.
- 'checkout_mode' => 'demo',
+ // Live cash-on-delivery orders are enabled by the deployed hostinger/live.flag.
+ 'checkout_mode' => 'live',
  'meta_pixel_id' => '1094362616793836',
 ];
