@@ -5,10 +5,11 @@ export const statuses: Record<string,string> = { received:'অর্ডার �
 export type OrderSummary = { reference:string; createdAt:string; updatedAt:string; status:string; paymentStatus:string; area:'bangladesh'|'dhaka'|'outside'; subtotal:number; delivery:number; total:number; quantity:number; demo:boolean; };
 export type SavedOrder = OrderSummary & { token:string; syncedAt:string };
 export type PublicConfig = { mode:'live'|'demo'; pixelId:string; };
-export type OrderInput = { name:string; phone:string; address:string; area:string };
+export type OrderInput = { name:string; email:string; phone:string; address:string; area:string };
 export function validateOrder(input:OrderInput){
  const errors:Record<string,string>={};
  if(input.name.trim().length<2 || input.name.trim().length>100) errors.name='আপনার সম্পূর্ণ নাম লিখুন (২–১০০ অক্ষর)।';
+ if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(input.email.trim()) || input.email.trim().length>254) errors.email='সঠিক ইমেইল ঠিকানা লিখুন।';
  if(!/^01[3-9]\d{8}$/.test(normalizePhone(input.phone))) errors.phone='সঠিক ১১ ডিজিটের বাংলাদেশি মোবাইল নম্বর লিখুন।';
  if(input.address.trim().length<15 || input.address.trim().length>600) errors.address='বাসা, এলাকা, থানা ও জেলাসহ বিস্তারিত ঠিকানা লিখুন (১৫–৬০০ অক্ষর)।';
  if(!['bangladesh','dhaka','outside'].includes(input.area)) errors.area='আপনার ডেলিভারি এলাকা নির্বাচন করুন।';
