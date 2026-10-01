@@ -136,6 +136,21 @@ Object.assign(english,{
 });
 Object.assign(english,{"সাদা ও কালো":"White & black","লাল ও সাদা":"Red & white","কালো ও লাল":"Black & red","সোনালি":"Gold","সমুদ্র সবুজ":"Teal","গোলাপি":"Pink","নিজের রং":"Custom colours","ব্যাকগ্রাউন্ড":"Background","বাটন ও প্রধান রং":"Buttons & accent","সেকশনের রং":"Section colour","যেকোনো RGB রং বেছে নিন। লেখার রং স্বয়ংক্রিয়ভাবে মানিয়ে যাবে।":"Choose any RGB colour. Text colour adjusts automatically."});
 english['Wireless stereo']='Wireless stereo';
+Object.assign(english,{
+ 'Facebook / YouTube ভিডিও লিংক':'Facebook / YouTube video link',
+ 'অথবা সরাসরি ভিডিও আপলোড করুন':'Or upload a video directly',
+ 'MP4 বা WebM, সর্বোচ্চ ২০ MB। আপলোডের পরে পরিবর্তন সেভ করুন।':'MP4 or WebM, up to 20 MB. Save changes after uploading.',
+ 'Facebook ভিডিওটি Public হতে হবে। Share লিংকের বদলে মূল ভিডিওর লিংক দিন।':'The Facebook video must be public. Use the original video URL, not a share link.',
+ 'ভিডিও আপলোড হচ্ছে…':'Uploading video…',
+ 'MP4 বা WebM ভিডিও দিন, সর্বোচ্চ ২০ MB।':'Choose an MP4 or WebM video up to 20 MB.',
+ 'ভিডিও আপলোড হয়নি।':'Video upload failed.',
+ 'ভিডিও লোড হয়নি। নিচের লিংকে আবার চেষ্টা করুন।':'Video failed to load. Try the link below.',
+ 'ভিডিও শব্দ বন্ধ রেখে শুরু হবে। না চললে Play চাপুন।':'Video starts muted. If it does not start, press Play.',
+ 'ভিডিও আলাদাভাবে খুলুন':'Open video separately',
+ 'বিজ্ঞাপনের অনুমতি':'Advertising consent','বিজ্ঞাপনের অনুমতি?':'Allow ad tracking?',
+ 'হ্যাঁ':'Yes','না':'No',
+ 'তথ্যগুলো যাচাই করুন। সঠিক মূল্য, যোগাযোগ নম্বর ও ভিডিও লিংক দিন।':'Check the price, contact number and video link.'
+});
 const bangla=Object.fromEntries(Object.entries(english).map(([bn,en])=>[en,bn]));
 export function translate(text:unknown,language:Language):string {
  if(text===undefined||text===null)return '';

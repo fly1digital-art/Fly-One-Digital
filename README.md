@@ -72,3 +72,12 @@ Meta server-side Conversions API এই সংস্করণে যোগ ক�
 - The included YouTube sample is labelled as a player demonstration, not an F-06 product demo. Replace its link in the editor. Playback loads on click and starts muted where the browser permits autoplay.
 - Checkout remains in demo mode until explicitly configured for real orders. Meta CAPI is not enabled.
 - This source package uses Sites/Cloudflare D1 and R2 with Sites authentication. It is not a direct Hostinger shared-hosting upload; Hostinger database/auth/storage need a separate port once the hosting plan is known.
+
+## October 2026 storefront update
+
+- Default phone and WhatsApp: +8801323527412. The old default saved phone is upgraded when settings are read; custom admin numbers are preserved.
+- Every fresh page load starts in Bangla. The EN button switches the current page to English.
+- Admin → Site editor → Colours and video accepts a public Facebook video/reel URL, YouTube URL, or an uploaded MP4/WebM (up to 20 MB). Use the original Facebook video URL, not a shortened share link. Upload and then save settings. Videos are stored in the existing MEDIA R2 binding; the selected URL is stored in the settings document. No schema migration is needed.
+- Playback requests muted autoplay on page load, with player controls and an external link fallback. Facebook privacy/embedding settings and browser autoplay restrictions can prevent playback.
+- Advertising consent is a compact Yes/No bar, with the existing Meta Pixel consent gating preserved.
+- This repository is still the Sites/Cloudflare implementation, not the separate PHP installation on 99fay.shop. It requires D1, R2 and Sites authentication. Uploading this source to Hostinger PHP shared hosting will not deploy it. No live deployment is performed by a GitHub commit.

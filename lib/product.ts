@@ -1,4 +1,4 @@
-export const PRODUCT = { id: 'F-06', name: 'Glasses Wireless headset', regular: 1199, price: 799, delivery: { bangladesh: 130 }, phone: '+8801990090262', whatsapp: 'https://wa.me/8801990090262', facebook: 'https://www.facebook.com/99fay/' } as const;
+export const PRODUCT = { id: 'F-06', name: 'Glasses Wireless headset', regular: 1199, price: 799, delivery: { bangladesh: 130 }, phone: '+8801323527412', whatsapp: 'https://wa.me/8801323527412', facebook: 'https://www.facebook.com/99fay/' } as const;
 export const money = (n: number) => '৳' + new Intl.NumberFormat('bn-BD').format(n);
 export const normalizePhone = (v: string) => v.replace(/[০-৯]/g, d => String('০১২৩৪৫৬৭৮৯'.indexOf(d))).replace(/[\s-]/g, '');
 export const statuses: Record<string,string> = { received:'অর্ডার গৃহীত', confirmed:'অর্ডার নিশ্চিত', shipped:'পাঠানো হয়েছে', delivered:'ডেলিভারি সম্পন্ন', cancelled:'বাতিল' };
