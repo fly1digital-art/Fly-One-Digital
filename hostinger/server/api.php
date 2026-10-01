@@ -5,9 +5,11 @@ function api(string $path): never {
  $method=$_SERVER['REQUEST_METHOD'];
  if($path==='/api/orders'&&$method==='POST'){
   $d=json_body();request_rate('order');$input=[];
-  foreach(['name','phone','address','area'] as $k)$input[$k]=is_string($d[$k]??null)?trim($d[$k]):'';
+  foreach(['name','email','phone','address','area'] as $k)$input[$k]=is_string($d[$k]??null)?trim($d[$k]):'';
+  $input['email']=strtolower($input['email']);
   $input['phone']=preg_replace('/[\s-]/u','',strtr($input['phone'],array_combine(preg_split('//u','০১২৩৪৫৬৭৮৯',-1,PREG_SPLIT_NO_EMPTY),range(0,9))));
   $errors=[];if(mb_strlen($input['name'])<2||mb_strlen($input['name'])>100)$errors['name']='সম্পূর্ণ নাম লিখুন (২–১০০ অক্ষর)।';
+  if(!filter_var($input['email'],FILTER_VALIDATE_EMAIL)||strlen($input['email'])>254)$errors['email']='সঠিক ইমেইল ঠিকানা লিখুন।';
   if(!preg_match('/^01[3-9]\d{8}$/D',$input['phone']))$errors['phone']='সঠিক ১১ ডিজিটের মোবাইল নম্বর দিন।';
   if(mb_strlen($input['address'])<15||mb_strlen($input['address'])>600)$errors['address']='বিস্তারিত ঠিকানা দিন (১৫–৬০০ অক্ষর)।';
   if(!in_array($input['area'],['bangladesh','dhaka','outside'],true))$errors['area']='সঠিক এলাকা নির্বাচন করুন।';
@@ -18,7 +20,7 @@ function api(string $path): never {
   if($previous){if(!hash_equals($previous['token_hash'],$hash)||!hash_equals($previous['input_hash'],$ih))throw new HttpError(409);reply(['order'=>summary($previous),'replayed'=>true]);}
   rate('phone-order',$input['phone'],5,3600);$reference='F06-'.strtoupper(bin2hex(random_bytes(8)));$now=now_iso();$product=read_content()['document']['product'];$price=$product['price'];$fee=$product['deliveryFee'];
   query('INSERT INTO f06_orders(reference,idempotency_key,token_hash,input_hash,name,phone,address,area,subtotal,delivery,total,status,payment_status,created_at,updated_at,campaign,is_demo,purchase_claimed) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,0) ON DUPLICATE KEY UPDATE idempotency_key=idempotency_key',[$reference,$d['idempotencyKey'],$hash,$ih,$input['name'],$input['phone'],$input['address'],$input['area'],$price,$fee,$price+$fee,'received','unpaid',$now,$now,clean_campaign($d['campaign']??null),public_config()['mode']==='demo'?1:0]);
-  $saved=query('SELECT * FROM f06_orders WHERE idempotency_key=?',[$d['idempotencyKey']])->fetch();if(!$saved||!hash_equals($saved['token_hash'],$hash)||!hash_equals($saved['input_hash'],$ih))throw new HttpError(409);
+  $saved=query('SELECT * FROM f06_orders WHERE idempotency_key=?',[$d['idempotencyKey']])->fetch();if(!$saved||!hash_equals($saved['token_hash'],$hash)||!hash_equals($saved['input_hash'],$ih))throw new HttpError(409);if($saved['reference']===$reference)send_order_confirmation($input['email'],$input['name'],$saved);
   reply(['order'=>summary($saved),'replayed'=>$saved['reference']!==$reference],$saved['reference']===$reference?201:200);
  }
  if(in_array($path,['/api/orders/track','/api/orders/event'],true)&&$method==='POST'){
