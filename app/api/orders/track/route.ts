@@ -1,0 +1,2 @@
+import {body,findAuthorized,json,summary,guard,failure} from '@/lib/server';
+export async function POST(request:Request){try{const data=await body(request);await guard(request,'track');const order=await findAuthorized(request,data.reference);return order?json({order:summary(order)}):json({error:'অর্ডারটি পাওয়া যায়নি অথবা এই ডিভাইসে প্রবেশাধিকার নেই।'},404)}catch(error){return failure(error,'সর্বশেষ অবস্থা আনা যায়নি। কিছুক্ষণ পরে চেষ্টা করুন।')}}

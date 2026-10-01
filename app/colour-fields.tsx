@@ -1,0 +1,3 @@
+'use client';
+import type {CustomColours} from '@/lib/site-content';
+export default function ColourFields({value,onChange,t}:{value:CustomColours;onChange:(v:CustomColours)=>void;t:(v:unknown)=>string}){return <div className="custom-colours">{([['background','ব্যাকগ্রাউন্ড'],['primary','বাটন ও প্রধান রং'],['surface','সেকশনের রং']] as const).map(([key,label])=><label key={key}><span>{t(label)}</span><input aria-label={t(label)} type="color" value={value[key]} onInput={e=>onChange({...value,[key]:e.currentTarget.value})} onChange={e=>onChange({...value,[key]:e.target.value})}/><code>{value[key].toUpperCase()}</code></label>)}<p className="fine">{t('যেকোনো RGB রং বেছে নিন। লেখার রং স্বয়ংক্রিয়ভাবে মানিয়ে যাবে।')}</p></div>}
