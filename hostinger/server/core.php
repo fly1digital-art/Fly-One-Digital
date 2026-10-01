@@ -65,7 +65,7 @@ function send_order_confirmation(string $email,string $name,array $order): void 
  $ref=h((string)$order['reference']);$customer=h($name);$total=number_format((int)$order['total']);
  $body='<!doctype html><html lang="bn"><meta charset="utf-8"><body style="font-family:Arial,sans-serif;color:#24352b;line-height:1.7"><div style="max-width:600px;margin:auto;border:1px solid #d9ddcc;border-radius:12px;padding:28px"><h1 style="font-size:24px">আপনার অর্ডার গ্রহণ করা হয়েছে</h1><p>প্রিয় '.$customer.',</p><p>F-06 Glasses Wireless Headset অর্ডার করার জন্য ধন্যবাদ।</p><p><strong>অর্ডার রেফারেন্স:</strong> '.$ref.'<br><strong>সর্বমোট:</strong> ৳'.$total.'<br><strong>পেমেন্ট:</strong> ক্যাশ অন ডেলিভারি</p><p>পণ্য হাতে পেয়ে মূল্য পরিশোধ করবেন। প্রয়োজনে কল করুন: +8801323527412</p><p>99fay.shop</p></div></body></html>';
  $subject=mb_encode_mimeheader('অর্ডার নিশ্চিতকরণ — '.$order['reference'],'UTF-8');$host=parse_url(config()['origin'],PHP_URL_HOST)?:'99fay.shop';
- $headers=['MIME-Version: 1.0','Content-Type: text/html; charset=UTF-8','From: 99fay Order <noreply@'.$host.'>','Reply-To: support@'.$host,'X-Mailer: PHP/'.PHP_VERSION];
+ $headers=['MIME-Version: 1.0','Content-Type: text/html; charset=UTF-8','From: 99fay Orders <orders@'.$host.'>','Reply-To: orders@'.$host,'X-Mailer: PHP/'.PHP_VERSION];
  if(!@mail($email,$subject,$body,implode("\r\n",$headers)))error_log('F06 confirmation email failed for '.$order['reference']);
 }
 function authorized_order(mixed $ref): array|false {
